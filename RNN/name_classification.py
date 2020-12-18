@@ -46,7 +46,7 @@ class NameDataset(Dataset):
         self.names = [row[0] for row in rows]
         self.len = len(self.names)
         self.countries = [row[1] for row in rows]
-        self.country_list = list(sorted(set(self.countries)))
+        self.country_list = list(sorted(set(self.countries)))--force
         self.country_dict = self.getCountryDict()
         self.country_num = len(self.country_list)
 
