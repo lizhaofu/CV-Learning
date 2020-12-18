@@ -74,7 +74,7 @@ print(output)
 '''
 
 
-BATCH_SIZE = 128
+BATCH_SIZE = 2
 
 transform = transforms.Compose([
     transforms.ToTensor(),
@@ -137,6 +137,8 @@ def train(model, device, train_loader, optimizer, loss_function, epoch):
 
         # forward + backward + update
         output = model(data)
+
+
         loss = loss_function(output, labels)
         loss.backward()
         optimizer.step()
@@ -161,7 +163,7 @@ def test(model, device):
             _, predicted = torch.max(outputs.data, dim=1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
-    print('Accuracy on test set: %d %%' % (100 * correct / total))
+    print('Accuracy on test set: %.6f %%' % (100 * correct / total))
 
 
 def main(model_str):
